@@ -17,7 +17,7 @@ jobs:
       - name: Download OpenWrt SDK
         run: curl -o openwrt-sdk.tar.xz https://downloads.openwrt.org/releases/22.03.6/targets/ramips/mt7620/openwrt-sdk-22.03.6-ramips-mt7620_gcc-11.2.0_musl.Linux-x86_64.tar.xz
       - name: Extract OpenWrt SDK
-        run: tar xf openwrt-sdk.tar.xz && mv openwrt-sdk-ath79-generic_gcc-12.3.0_musl.Linux-x86_64 sdk
+        run: tar xf openwrt-sdk.tar.xz && mv openwrt-sdk-22.03.6-ramips-mt7620_gcc-11.2.0_musl.Linux-x86_64 sdk
       - name: Create config
         run: make -C sdk defconfig && echo "CONFIG_SRC_TREE_OVERRIDE=y" >> sdk/.config
       - name: Update package feed
@@ -30,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: output
-          path: sdk/bin/packages/mips_24kc/packages
+          path: sdk/bin/packages
